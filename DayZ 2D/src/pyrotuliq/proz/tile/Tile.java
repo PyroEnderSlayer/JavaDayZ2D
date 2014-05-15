@@ -37,6 +37,10 @@ public class Tile {
 		return this.textureName;
 	}
 	
+	public int getID() {
+		return this.id;
+	}
+	
 	public void registerIcon() {
 		// TODO Code register icon to register an icon located at "[icon]"
 	}
