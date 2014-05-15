@@ -1,5 +1,7 @@
 package pyrotuliq.proz.entity;
 
 public class PlayerEntity extends Entity {
-	// TODO Code this.
+	public PlayerEntity(int health) {
+		super(health);
+	}
 }
