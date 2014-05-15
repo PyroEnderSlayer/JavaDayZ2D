@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Entity {
 	private static Map<Long, Entity> entities;
-	private static long nextUUID = 0;
+	private static long nextUUID = -1;
 	private long uuid;
 	
 	public Entity() {
