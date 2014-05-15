@@ -13,7 +13,7 @@ public class IconRegister {
 		// DO NOTHING
 	}
 	
-	public static Image registerIcon(String icon) {
+	public Image registerIcon(String icon) {
 		try {
 			BufferedImage image = ImageIO.read(ProZ.class.getResourceAsStream("assets/textures/" + icon + ".png"));
 			if (image.getWidth() != 32 || image.getHeight() != 32) {
