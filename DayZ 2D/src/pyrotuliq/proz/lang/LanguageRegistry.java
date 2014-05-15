@@ -17,7 +17,7 @@ public class LanguageRegistry {
 	
 	public static void loadLanguage(String lang) throws IOException {
 		Language language = new Language();
-		BufferedInputStream input = new BufferedInputStream(ProZ.class.getClassLoader().getResourceAsStream("assets/lang/" + lang));
+		BufferedInputStream input = new BufferedInputStream(ProZ.class.getClassLoader().getResourceAsStream("assets/lang/" + lang + ".lang"));
 		long available = input.available();
 		
 		String currentKey = "";
