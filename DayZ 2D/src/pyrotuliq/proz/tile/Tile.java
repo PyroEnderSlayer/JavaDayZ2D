@@ -41,7 +41,7 @@ public class Tile {
 		return this.id;
 	}
 	
-	public void registerIcon() {
+	public void registerIcon(IconRegister iconRegister) {
 		// TODO Code register icon to register an icon located at "[icon]"
 	}
 }
