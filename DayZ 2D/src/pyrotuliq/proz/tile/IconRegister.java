@@ -13,7 +13,12 @@ public class IconRegister {
 		// DO NOTHING
 	}
 	
-	public synchronized Image registerIcon(String icon) {
+	/**
+	 * Loads the image at "assets/textures/[icon].png" and returns it in the form of an Image object if it is 32x32 pixels.
+	 * @param icon The name of the icon file.
+	 * @return The image that was loaded from the file, otherwise null.
+	 */
+	public Image registerIcon(String icon) {
 		try {
 			BufferedImage image = ImageIO.read(ProZ.class.getResourceAsStream("assets/textures/" + icon + ".png"));
 			if (image.getWidth() != 32 || image.getHeight() != 32) {
