@@ -1,8 +1,10 @@
 package pyrotuliq.proz;
 
 import java.awt.Component;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -10,23 +12,28 @@ import javax.swing.JFrame;
 
 import pyrotuliq.proz.gui.GameMenu;
 
-public class ProZ extends JFrame implements KeyListener {
+public class ProZ extends JFrame implements KeyListener, ComponentListener {
+	public static final Dimension DEFAULT_SIZE = new Dimension(768, 512);
+	
 	private static final long serialVersionUID = -1147290630450651940L;
+	private static GameMenu gameMenu;
+	private static JFrame frame;
 
 	private ProZ(String title) {
 		super(title);
+		addComponentListener(this);
 	}
 	
 	public static void main(String[] args) {
-		JFrame frame = new ProZ("ProZ");
-		GameMenu menu = new GameMenu();
+		frame = new ProZ("ProZ");
+		gameMenu = new GameMenu(DEFAULT_SIZE);
 		
-		frame.setLayout(new FlowLayout());
-		frame.setSize(1024, 512);
+		frame.setLayout(null);
+		frame.setSize(DEFAULT_SIZE);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		for (Component component : menu.getComponents())
+		for (Component component : gameMenu.getComponents())
 			frame.add(component);
 		
 		frame.setVisible(true);
@@ -63,6 +70,28 @@ public class ProZ extends JFrame implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+		// TODO Code this for the shooter.
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+		if (e.getComponent() instanceof ProZ) {
+			gameMenu.resize(frame.getSize());
+		}
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+		// DO NOTHING
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+		// DO NOTHING
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent e) {
+		// DO NOTHING
 	}
 }
