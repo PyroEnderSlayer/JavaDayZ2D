@@ -1,6 +1,6 @@
 package pyrotuliq.proz.tile;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import pyrotuliq.proz.graphics.IconRegister;
 import pyrotuliq.proz.lang.IDConflictError;
 
 public class Tile {
-	protected Image tileIcon;
+	protected BufferedImage tileIcon;
 	private static Map<Integer, Tile> tiles = new HashMap<>();
 	private int id;
 	private String textureName;
@@ -52,6 +52,10 @@ public class Tile {
 	 */
 	public String getTextureName() {
 		return this.textureName;
+	}
+	
+	public final BufferedImage getIcon() {
+		return this.tileIcon;
 	}
 	
 	/**

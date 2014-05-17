@@ -1,5 +1,6 @@
 package pyrotuliq.proz;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,39 +12,72 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import pyrotuliq.proz.gui.GameMenu;
+import pyrotuliq.proz.world.World;
 
 public class ProZ extends JFrame implements KeyListener, ComponentListener {
 	public static final Dimension DEFAULT_SIZE = new Dimension(768, 512);
 	
 	private static final long serialVersionUID = -1147290630450651940L;
-	private static GameMenu gameMenu;
-	private static JFrame frame;
+	private static ProZ frame;
+	private World world;
+	private GameMenu gameMenu;
 
-	private ProZ(String title) {
+	ProZ(String title) {
 		super(title);
 		addComponentListener(this);
+		
+		world = null;
+		gameMenu = null;
 	}
 	
 	public static void main(String[] args) {
 		frame = new ProZ("ProZ");
-		gameMenu = new GameMenu(DEFAULT_SIZE);
+		GameMenu gameMenu = new GameMenu(DEFAULT_SIZE);
 		
 		frame.setLayout(null);
 		frame.setSize(DEFAULT_SIZE);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		for (Component component : gameMenu.getComponents())
-			frame.add(component);
+		frame.setGameMenu(gameMenu);
 		
 		frame.setVisible(true);
 	}
 	
-	@Override
-	public void paint(Graphics graph) {
-		super.paint(graph);
+	public void setGameMenu(GameMenu gameMenu) {
+		if (this.gameMenu != null)
+			return;
 		
-		// TODO Rendering tiles, entities and game menus.
+		this.gameMenu = gameMenu;
+		
+		for (Component component : gameMenu.getComponents())
+			this.add(component);
+	}
+	
+	public void setWorld(World world) {
+		this.world = world;
+	}
+	
+	public GameMenu getGameMenu() {
+		return this.gameMenu;
+	}
+	
+	public World getWorld() {
+		return this.world;
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		g.setColor(Color.BLACK);
+		//g.drawRect(0, 0, getWidth(), getHeight());
+		
+		if (world != null) {
+			for (int y = 0; y < world.getHeight(); y++) {
+				for (int x = 0; x < world.getWidth(); x++) {
+					g.drawImage(world.getTile(x, y).getIcon(), x * 32, y * 32, 32, 32, null);
+				}
+			}
+		} else
+			super.paint(g);
 	}
 
 	@Override
@@ -75,8 +109,8 @@ public class ProZ extends JFrame implements KeyListener, ComponentListener {
 
 	@Override
 	public void componentResized(ComponentEvent e) {
-		if (e.getComponent() instanceof ProZ) {
-			gameMenu.resize(frame.getSize());
+		if (e.getComponent() instanceof ProZ && gameMenu != null) {
+			gameMenu.resize(getSize());
 		}
 	}
 
