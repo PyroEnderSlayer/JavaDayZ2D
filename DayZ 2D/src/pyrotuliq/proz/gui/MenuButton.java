@@ -44,11 +44,11 @@ public class MenuButton extends JButton implements MouseListener {
 	@Override
 	public void paintComponent(Graphics g) {
 		int textWidth = g.getFontMetrics(this.getFont()).stringWidth(getText());
-		System.out.println("Rendering button...");
+		int textHeight = g.getFontMetrics(this.getFont()).getHeight();
 		
 		g.drawImage(currentImage, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.WHITE);
-		g.drawString(getText(), getWidth() / 2 - textWidth / 2, 20);
+		g.drawString(getText(), getWidth() / 2 - textWidth / 2, getHeight() / 2 + textHeight / 4);
 	}
 	
 	@Override

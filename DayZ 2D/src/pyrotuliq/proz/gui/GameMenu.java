@@ -2,25 +2,42 @@ package pyrotuliq.proz.gui;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-
-public class GameMenu implements KeyListener, MouseListener {
+public class GameMenu implements KeyListener {
 	public static final Dimension BUTTON_SIZE = new Dimension(256, 32);
 	
+	private Dimension currentSize;
 	private MenuButton playButton;
 	private MenuButton quitButton;
 	
-	public GameMenu() {
+	public GameMenu(Dimension size) {
 		playButton = new MenuButton("Play");
 		quitButton = new MenuButton("Quit");
 		
 		playButton.setPreferredSize(BUTTON_SIZE);
 		quitButton.setPreferredSize(BUTTON_SIZE);
+		
+		resize(size);
+	}
+	
+	public void resize(Dimension size) {
+		if (size == currentSize)
+			return;
+		
+		//playButton.setLocation(size.width / 2 - playButton.getWidth() / 2, size.height / 2 - playButton.getHeight() - 5);
+		//quitButton.setLocation(size.width / 2 - quitButton.getWidth() / 2, size.height / 2 + 5);
+		
+		Dimension playSize = playButton.getPreferredSize();
+		Dimension quitSize = quitButton.getPreferredSize();
+		
+		playButton.setBounds(size.width / 2 - playButton.getWidth() / 2, size.height / 2 - playButton.getHeight() - 25, playSize.width, playSize.height);
+		quitButton.setBounds(size.width / 2 - quitButton.getWidth() / 2, size.height / 2 - 15, quitSize.width, quitSize.height);
+		
+		System.out.println("Resized!");
+		
+		currentSize = size;
 	}
 	
 	public Component[] getComponents() {
@@ -29,7 +46,7 @@ public class GameMenu implements KeyListener, MouseListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -40,39 +57,6 @@ public class GameMenu implements KeyListener, MouseListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		if (e.getButton() != MouseEvent.BUTTON1)
-			return;
-		Point location = e.getLocationOnScreen();
-		
-		if (location.x >= playButton.getX() && location.x <= playButton.getX() + playButton.getWidth() && location.y >= playButton.getY() && location.y <= playButton.getY() + playButton.getHeight()) {
-			
-		}
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
