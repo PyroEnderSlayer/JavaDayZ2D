@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pyrotuliq.proz.entity.Entity;
+import pyrotuliq.proz.graphics.IconRegister;
 import pyrotuliq.proz.lang.IDConflictError;
 
 public class Tile {

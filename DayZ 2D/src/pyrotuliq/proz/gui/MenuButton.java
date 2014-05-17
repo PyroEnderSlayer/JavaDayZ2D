@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
 
-import pyrotuliq.proz.tile.IconRegister;
+import pyrotuliq.proz.graphics.IconRegister;
 
 public class MenuButton extends JButton implements MouseListener {
 	private static final long serialVersionUID = 18862887163287944L;

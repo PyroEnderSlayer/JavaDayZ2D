@@ -1,4 +1,4 @@
-	package pyrotuliq.proz.tile;
+	package pyrotuliq.proz.graphics;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class IconRegister {
 	 */
 	public BufferedImage createTileIcon(String icon) {
 		try {
-			BufferedImage image = ImageIO.read(ProZ.class.getClassLoader().getResourceAsStream("assets/textures/" + icon + ".png"));
+			BufferedImage image = ImageIO.read(ProZ.class.getClassLoader().getResourceAsStream("assets/textures/tiles/" + icon + ".png"));
 			if (image.getWidth() != 32 || image.getHeight() != 32) {
 				System.err.println("Failed to load texture: Invalid texture size");
 				return null;
@@ -39,7 +39,7 @@ public class IconRegister {
 	
 	public BufferedImage createGuiIcon(String icon) {
 		try {
-			BufferedImage image = ImageIO.read(ProZ.class.getClassLoader().getResourceAsStream("assets/gui/" + icon + ".png"));
+			BufferedImage image = ImageIO.read(ProZ.class.getClassLoader().getResourceAsStream("assets/textures/gui/" + icon + ".png"));
 			return image;
 		} catch (IOException e) {
 			System.err.println("Failed to load texture: " + icon);
