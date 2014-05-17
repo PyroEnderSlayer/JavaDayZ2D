@@ -39,6 +39,20 @@ public class World {
 	}
 	
 	/**
+	 * Creates a new world using the specified scale and the tile array array.
+	 * @param scale The scale for rendering the world. Defaults to 1 if smaller or equal to 0.
+	 * @param tiles The tile array array that will predefine all the tiles. Defaults to 16x16 array of null tiles if null.
+	 */
+	public World(float scale, Tile[][] tiles) {
+		if (scale <= 0)
+			scale = 1;
+		if (tiles == null)
+			tiles = new Tile[16][16];
+		this.scale = scale;
+		this.tiles = tiles;
+	}
+	
+	/**
 	 * Spawns the specified entity at the specified position.
 	 * The specified entity cannot be spawned more than once in each world!
 	 * @param entity The entity you want to spawn.
