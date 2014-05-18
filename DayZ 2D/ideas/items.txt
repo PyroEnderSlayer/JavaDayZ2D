@@ -31,3 +31,25 @@
 2. Decreased defense and power.
 	# Mega Suit
 1. Increased everything.
+
+		### CLOTHES (come in random / different colors)
+	# Tops
+1. Shirt
+2. T-Shirt
+3. Vest
+4. Jacket
+	# Bottoms
+1. Jeans
+2. Trausers
+3. Shorts
+	# Hats
+1. Cap
+2. Cowboy Hat
+3. Bandana
+	# Masks
+1. Payday Masks
+2. Pilot Mask
+	# Shoes
+1. Sneakers
+2. Boots
+3. Sandals
