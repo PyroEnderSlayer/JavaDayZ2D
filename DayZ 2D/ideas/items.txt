@@ -1,0 +1,17 @@
+		###GUNS
+	#Pistols
+1.Makarov
+2.Desert Eagle
+	#Shotguns
+1.VEPR 12
+2.AA 12
+3.KS 23
+	#Rifles/Sniper
+1.Mossin (with/without Scope)
+2.Dragunov
+	#Assault Rifles
+1.AK-47
+2.FN SCAR
+3.M4
+	#Ammo
+1.9mm
