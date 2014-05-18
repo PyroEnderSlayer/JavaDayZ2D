@@ -1,0 +1,5 @@
+ # The following files are test files and WILL BE CHANGED (this file is included).
+ # These files are to be edited unless if they listed in the ".gitignore" file.
+
+/src/pyrotuliq/proz/Tester.java						 # This only exists if you create it (JUnit testing), see ".gitignore"
+/src/assets/textures/tile/wall.png					 # This is a great file for testing the graphics

@@ -9,7 +9,7 @@ public class Entity {
 	private int health;
 	
 	/**
-	 * Creates a new Entity with of health 0.
+	 * Creates a new Entity with the selected health.
 	 * @param health
 	 */
 	public Entity(int health) {

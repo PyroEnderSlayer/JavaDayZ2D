@@ -1,5 +1,6 @@
 package pyrotuliq.proz.world;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import pyrotuliq.proz.entity.Entity;
@@ -36,6 +37,7 @@ public class World {
 		
 		this.scale = scale;
 		tiles = new Tile[width][height];
+		entities = new HashMap<>();
 	}
 	
 	/**
@@ -50,6 +52,7 @@ public class World {
 			tiles = new Tile[16][16];
 		this.scale = scale;
 		this.tiles = tiles;
+		entities = new HashMap<>();
 	}
 	
 	/**

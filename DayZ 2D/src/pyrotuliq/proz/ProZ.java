@@ -73,7 +73,7 @@ public class ProZ extends JFrame implements KeyListener, ComponentListener {
 		if (world != null) {
 			for (int y = 0; y < world.getHeight(); y++) {
 				for (int x = 0; x < world.getWidth(); x++) {
-					g.drawImage(world.getTile(x, y).getIcon(), x * 32, y * 32, 32, 32, null);
+					g.drawImage(world.getTile(x, y).getIcon(), (int) (world.getScale() * x * 32), (int) (world.getScale() * y * 32 + getInsets().top), (int) (world.getScale() * 32), (int) (world.getScale() * 32), null);
 				}
 			}
 		} else
