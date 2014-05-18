@@ -1,17 +1,33 @@
-		###GUNS
-	#Pistols
+		### GUN
+	# Pistol
 1.Makarov
 2.Desert Eagle
-	#Shotguns
+	# Shotguns
 1.VEPR 12
 2.AA 12
 3.KS 23
-	#Rifles/Sniper
+	# Rifle/Sniper
 1.Mossin (with/without Scope)
 2.Dragunov
-	#Assault Rifles
+	# Assault Rifle
 1.AK-47
 2.FN SCAR
 3.M4
-	#Ammo
+	# Ammo
 1.9mm
+
+		### ARMOUR
+	# Combat Suit
+1. Increased speed and power.
+2. Decreased defense and resistance.
+	# Heavy Suit
+1. Increased defense and resistance.
+2. Decreased speed and power.
+	# Power Suit
+1. Increased defense and power.
+2. Decreased speed and resistance.
+	# Quick Suit
+1. Increased speed and resistance.
+2. Decreased defense and power.
+	# Mega Suit
+1. Increased everything.
