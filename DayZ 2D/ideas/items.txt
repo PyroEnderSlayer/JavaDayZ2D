@@ -16,23 +16,8 @@
 	# Ammo
 1.9mm
 
-		### ARMOUR
-	# Combat Suit
-1. Increased speed and power.
-2. Decreased defense and resistance.
-	# Heavy Suit
-1. Increased defense and resistance.
-2. Decreased speed and power.
-	# Power Suit
-1. Increased defense and power.
-2. Decreased speed and resistance.
-	# Quick Suit
-1. Increased speed and resistance.
-2. Decreased defense and power.
-	# Mega Suit
-1. Increased everything.
-
-		### CLOTHES (come in random / different colors)
+		### CLOTHES
+	(come in random / different colors)
 	# Tops
 1. Shirt
 2. T-Shirt
