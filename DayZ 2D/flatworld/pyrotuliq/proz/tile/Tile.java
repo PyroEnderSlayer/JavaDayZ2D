@@ -6,7 +6,7 @@ import java.util.Map;
 
 import pyrotuliq.proz.entity.Entity;
 import pyrotuliq.proz.graphics.IconRegister;
-import pyrotuliq.proz.lang.IDConflictError;
+import pyrotuliq.proz.internal.IDConflictError;
 
 public class Tile {
 	protected BufferedImage tileIcon;

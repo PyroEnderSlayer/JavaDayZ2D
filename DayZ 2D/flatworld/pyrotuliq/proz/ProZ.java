@@ -11,27 +11,44 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import pyrotuliq.proz.entity.Entity;
 import pyrotuliq.proz.gui.GameMenu;
 import pyrotuliq.proz.world.World;
+import pyrotuliq.proz.world.WorldEntityManager;
+import pyrotuliq.proz.world.WorldMemory;
 
-public class ProZ extends JFrame implements KeyListener, ComponentListener {
+public class ProZ extends JFrame implements KeyListener, ComponentListener, WorldMemory {
+	/**
+	 * The default JFrame size.
+	 */
 	public static final Dimension DEFAULT_SIZE = new Dimension(768, 512);
 	
 	private static final long serialVersionUID = -1147290630450651940L;
 	private static ProZ frame;
 	private World world;
 	private GameMenu gameMenu;
+	private WorldEntityManager entityManager;
 
-	ProZ(String title) {
+	/**
+	 * Creates a ProZ object with the entered title and mob spawn frequency.
+	 * @param title The title of the JFrame.
+	 * @param mobFrequency The spawn frequency for mobs (between 0 and 1).
+	 */
+	ProZ(String title, float mobFrequency) {
 		super(title);
 		addComponentListener(this);
 		
 		world = null;
 		gameMenu = null;
+		entityManager = new WorldEntityManager(this, mobFrequency);
 	}
 	
+	/**
+	 * Main method, called by the JRE.
+	 * @param args The execution arguments.
+	 */
 	public static void main(String[] args) {
-		frame = new ProZ("ProZ");
+		frame = new ProZ("ProZ", 0.145F);
 		GameMenu gameMenu = new GameMenu(DEFAULT_SIZE);
 		
 		frame.setLayout(null);
@@ -54,6 +71,9 @@ public class ProZ extends JFrame implements KeyListener, ComponentListener {
 	}
 	
 	public void setWorld(World world) {
+		for (Component comp : this.getComponents())
+			comp.setVisible(world == null);
+		
 		this.world = world;
 	}
 	
@@ -67,8 +87,8 @@ public class ProZ extends JFrame implements KeyListener, ComponentListener {
 	
 	@Override
 	public void paint(Graphics g) {
-		g.setColor(Color.BLACK);
-		//g.drawRect(0, 0, getWidth(), getHeight());
+		this.setBackground(Color.RED);
+		this.setForeground(Color.RED);
 		
 		if (world != null) {
 			for (int y = 0; y < world.getHeight(); y++) {
@@ -127,5 +147,31 @@ public class ProZ extends JFrame implements KeyListener, ComponentListener {
 	@Override
 	public void componentHidden(ComponentEvent e) {
 		// DO NOTHING
+	}
+
+	@Override
+	public void spawnEntity(Entity entity, int x, int y) {
+		System.out.println("Spawned Entity!");
+		world.spawnEntity(entity, x, y);
+	}
+
+	@Override
+	public Entity getEntity(long uuid) {
+		return world.getEntity(uuid);
+	}
+
+	@Override
+	public long getEntityCount() {
+		return world.getEntityCount();
+	}
+
+	@Override
+	public Dimension getWorldSize() {
+		return new Dimension(world.getWidth(), world.getHeight());
+	}
+
+	@Override
+	public void despawnEntity(long uuid) {
+		world.despawnEntity(uuid);
 	}
 }

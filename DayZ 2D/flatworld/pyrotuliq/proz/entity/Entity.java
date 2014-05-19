@@ -7,14 +7,16 @@ public class Entity {
 	private static long nextUUID = -1;
 	private long uuid;
 	private int health;
+	private long life;
 	
 	/**
 	 * Creates a new Entity with the selected health.
 	 * @param health
 	 */
-	public Entity(int health) {
+	public Entity(int health, long life) {
 		this.uuid = nextUUID++;
 		this.health = health;
+		this.life = life < -1 ? life = -1 : life;
 	}
 	
 	/**
@@ -26,6 +28,18 @@ public class Entity {
 		if (entities.containsKey(uuid))
 			return entities.get(uuid);
 		return null;
+	}
+	
+	/**
+	 * Counts all the non-player entities.
+	 * @return The number of non-player entities (all those starting from UUID 0).
+	 */
+	public static long existingEntityCount() {
+		return entities.size() - 1;
+	}
+	
+	public long getLife() {
+		return life;
 	}
 	
 	/**
@@ -42,6 +56,13 @@ public class Entity {
 	 */
 	public int getHealth() {
 		return health;
+	}
+	
+	/**
+	 * Decreases the life of the entity until it's equal to 0. If it's life is -1 (never despawns), it will not change.
+	 */
+	public void decreaseLife() {
+		this.life = life <= 0 ? life : life - 1;
 	}
 	
 	/**

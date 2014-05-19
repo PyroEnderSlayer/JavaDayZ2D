@@ -32,8 +32,8 @@ public class GameMenu implements KeyListener {
 		Dimension playSize = playButton.getPreferredSize();
 		Dimension quitSize = quitButton.getPreferredSize();
 		
-		playButton.setBounds(size.width / 2 - playButton.getWidth() / 2, size.height / 2 - playButton.getHeight() - 25, playSize.width, playSize.height);
-		quitButton.setBounds(size.width / 2 - quitButton.getWidth() / 2, size.height / 2 - 15, quitSize.width, quitSize.height);
+		playButton.setBounds(size.width / 2 - playButton.getWidth() / 2 - 8, size.height / 2 - playButton.getHeight() - 24, playSize.width, playSize.height);
+		quitButton.setBounds(size.width / 2 - quitButton.getWidth() / 2 - 8, size.height / 2 - 14, quitSize.width, quitSize.height);
 		
 		System.out.println("Resized!");
 		

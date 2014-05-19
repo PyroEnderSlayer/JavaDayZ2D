@@ -66,10 +66,22 @@ public class World {
 	public boolean spawnEntity(Entity entity, int x, int y) {
 		if (x < 0 || x >= tiles.length || y < 0 || y >= tiles[x].length)
 			return false;
-		if (tiles[x][y].isSolid())
+		if (tiles[x][y].isSolid() || entity == null)
 			return false;
 		entities.put(entity.getUUID(), entity);
 		tiles[x][y].onStepOn(entity);
+		return true;
+	}
+	
+	/**
+	 * Despawns the specified entity and returns true if it succeeded.
+	 * @param uuid The UUID of the entity to despawn.
+	 * @return True if it successfully despawned the entity, otherwise false.
+	 */
+	public boolean despawnEntity(long uuid) {
+		if (!entities.containsKey(uuid))
+			return false;
+		entities.remove(uuid);
 		return true;
 	}
 	
@@ -83,6 +95,14 @@ public class World {
 		if (x < 0 || x >= tiles.length || y < 0 || y >= tiles[x].length)
 			return null;
 		return tiles[x][y];
+	}
+	
+	/**
+	 * Counts the entities found in this world, excluding the player-controlled entity (-1).
+	 * @return The number of non-player entities found.
+	 */
+	public long getEntityCount() {
+		return entities.size() - 1;
 	}
 	
 	/**
